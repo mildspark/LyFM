@@ -1123,7 +1123,7 @@ $(document).ready(function () {
 	$(window).resize(fm.fix_width);
 	load_file_list(LyFM.get_path());
 	add_func_event();
-	//check_update();
+	check_update();
 });
 function check_update() {
 	fm.check_update();
@@ -1409,7 +1409,6 @@ LyEdit.prototype.save = function (id, content) {
 	var id = (selected[0].id).replace(/tab_file_/, "");
 	var file = LyEdit.file[id.match(/[0-9]+/)];
 	if (file.status) {
-		content = window.btoa(encodeURIComponent(content));
 		$.post(URL + 'Api/put_file', {path: file.path, char_set: file.char_set, content: content}, function (data) {
 			if (data['status']) {
 				LyEdit.prototype.add(file.path, file.name);

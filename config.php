@@ -1,4 +1,22 @@
 <?php
+function ip(){
+	$ip = null;
+	if(isset($_SERVER["HTTP_X_FORWARDED_FOR"]) && $_SERVER["HTTP_X_FORWARDED_FOR"]){
+		$ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+	}elseif(isset($_SERVER["HTTP_CLIENT_IP"]) && $_SERVER["HTTP_CLIENT_IP"]){
+		$ip = $_SERVER["HTTP_CLIENT_IP"];
+	}elseif (isset($_SERVER["REMOTE_ADDR"]) && $_SERVER["REMOTE_ADDR"]){
+		$ip = $_SERVER["REMOTE_ADDR"];
+	}
+	return $ip;
+}
+
+$ip = ip();
+$ipList = explode(',', $ip);
+if($ipList[0] != '127.0.0.1'){
+	die('forbidden');
+}
+
 //数组中不要使用下划线等字符，以免出错
 $config = array(
 	'title' => 'LY PHP 文件管理器',

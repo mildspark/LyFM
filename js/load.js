@@ -14,13 +14,13 @@ $(document).ready(function () {
 	$(window).resize(fm.fix_width);
 	load_file_list(LyFM.get_path());
 	add_func_event();
-	check_update();
+	//check_update();
 });
 function check_update() {
-	fm.check_update();
+	//fm.check_update();
 }
 function check_up_now() {
-	fm.check_up_now();
+	//fm.check_up_now();
 }
 function edit_file(path, name) {
 	if (edit == null)edit = new LyEdit();
